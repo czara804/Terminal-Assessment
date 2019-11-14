@@ -56,6 +56,7 @@ $user1 = User.new(response_name, companions_choice)
 puts $user1.get_companions
 puts "_______________________________________________________"
 puts "Alright, #{$user1.get_name}, now that you've got some companions, I'm gifting you with a map to Dr. Tempestas castle. Let's get started!"
+#insert map
 
 puts "You and your companions have set out to see the famed but reclusive Climate Scientist Dr. Elsa Tempestas. She has a secret pass phrase you must recover to start a carbon-fixing machine that will halt the superheating of the Earth.
 You have reached a fork in the road. To the left is a long and winding road reaching towards the horizon and to the right is an aged forest path, twining between tall trees."
@@ -101,15 +102,20 @@ case troll_choice
             What am I?"
             # riddle 
             riddle_answer = "shadow"
+            answer = ""
             3.times do puts "What is the solution?"
                 answer = gets.chomp
                 if answer == riddle_answer
-                puts "Correct! The troll allows you to pass"
-                break
+                    puts "Correct! The troll allows you to pass"  
+                    break
                 else answer == false
                 end 
             end 
-            puts "Unfortunately, you have run out of attempts. Angered, the troll causes the bridge to collapse and you are eaten by a congreation of alligators."
+            #if (solved == false)
+            if (answer != riddle_answer)
+                puts "Unfortunately, you have run out of attempts. Angered, the troll causes the bridge to collapse and you are eaten by a congreation of alligators."
+                exit
+            end
         
     when "Flight"
     puts "Not liking your chances, you grab your companions and make a run for it. You run and run and run and happen to run straight into a magic portal that spits you out...... right back on your initial path."
@@ -118,7 +124,10 @@ case troll_choice
 end 
 
 
+# mountain_choice 
 puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}."
+
+
 
 
 
