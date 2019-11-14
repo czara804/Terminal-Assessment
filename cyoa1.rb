@@ -32,8 +32,14 @@ class User
         @companions.shuffle.first
     end 
 
-    def set_animal_resuce(choice)
+    def set_animal_resuce=(choice)
         @animal_rescue = choice
+    end 
+
+    def each_companion_name
+        @companions.each do |pal|
+            pal.colorize(:red)
+        end 
     end 
 
 end 
@@ -48,6 +54,7 @@ companions_choice = $prompt.select("What is a quest without some companions? Ple
 
 $user1 = User.new(response_name, companions_choice)
 puts $user1.get_companions
+puts "_______________________________________________________"
 puts "Alright, #{$user1.get_name}, now that you've got some companions, I'm gifting you with a map to Dr. Tempestas castle. Let's get started!"
 
 puts "You and your companions have set out to see the famed but reclusive Climate Scientist Dr. Elsa Tempestas. She has a secret pass phrase you must recover to start a carbon-fixing machine that will halt the superheating of the Earth.
@@ -61,15 +68,15 @@ case pathway
     when "Long_road"
     puts "All of a sudden a storm rolls in:"
     r = Artii::Base.new :font => 'slant'
-    puts r.asciify('RainHailThunder&Lightening')
+    puts r.asciify('RainHailThunder&Lightning')
     puts "The storm rages, lightning strikes on the road right in front of your group! Only you and #{$user1.random_companion} are left as you run down the road towards a river and a bridge."
     when "Forest_path"
     puts "You come across an injured #{animal = Faker::Creature::Animal.name}" 
     animal_rescue = $prompt.select("Do you want to help #{animal} out?", "Sure", "No time, I'm on a quest")
         if animal_rescue == "Sure"
-            $user1.set_animal_resuce=(yes)
+            $user1.set_animal_resuce=("yes")
         else 
-            $user1.set_animal_resuce=(no)
+            $user1.set_animal_resuce=("no")
         end 
 
     puts "Dappled light is coming through the trees but it feels like something might be watching you in the shadows. You hurry along as #{$user1.random_companion} says they can see an exit up ahead. You come out of the of the forest and see a bridge."
@@ -78,23 +85,40 @@ end
 
 puts path_choice
 
-
-puts "The wooden bridge is covered in vines and after you consult the map, you determine in it is the correct way to go. As you you take your first step onto the bridge, a troll appears"
-
-troll_choice = $prompt.select("Ah a troll! Should you stay and fight or take flight?", %w(Fight Flight))
-
+# troll_choice
+puts "The wooden bridge is covered in vines and after you consult the map, you determine in it is the correct way to go. As you you take your first step onto the bridge, a troll appears!"
+t = Artii::Base.new :font => 'slant'
+puts t.asciify('Troll!')
+troll_choice = $prompt.select("Troll in the dunge....I mean bridge. Should you stay and fight or take flight?", %w(Fight Flight))
 case troll_choice
     when "Fight" 
     puts "You stand your ground. The troll says you will need to answer a riddle and he will give you 3 attempts before something ghastly will happen"
-        # 3.times 
+    puts "The troll says 
+            Only one color, but not one size,
+            Stuck at the bottom, yet easily flies,
+            Present in sun, but not in rain,
+            Doing no harm, and feeling no pain.
+            What am I?"
             # riddle 
-
+            riddle_answer = "shadow"
+            3.times do puts "What is the solution?"
+                answer = gets.chomp
+                if answer == riddle_answer
+                puts "Correct! The troll allows you to pass"
+                break
+                else answer == false
+                end 
+            end 
+            puts "Unfortunately, you have run out of attempts. Angered, the troll causes the bridge to collapse and you are eaten by a congreation of alligators."
+        
     when "Flight"
-    puts "Not liking your chances, you grab your companions and make a run for it. You run and run and run. And happen to run straight into a magic portal that spits you out...... right back on your initial path."
-    # call pathway_choice method
-
+    puts "Not liking your chances, you grab your companions and make a run for it. You run and run and run and happen to run straight into a magic portal that spits you out...... right back on your initial path."
+    puts path_choice
+    
 end 
 
+
+puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}."
 
 
 
