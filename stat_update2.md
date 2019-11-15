@@ -1,6 +1,6 @@
-Start of Day 2: 
+Stat update 2: 
 
-Day 1
+Day 1 summary
 - Software development plan skeleton and trello board set up in the morning. 
 - checklists for features (implementation plan)
 - flow chart on paper 
