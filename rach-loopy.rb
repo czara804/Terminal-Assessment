@@ -117,10 +117,11 @@ troll_choice = $prompt.select("Troll in the dunge....I mean bridge. Should you s
                     puts "Unfortunately, you have run out of attempts. Angered, the troll causes the bridge to collapse and you are eaten by a congreation of alligators."
                     exit
                 end
-            
+            "fight"
         when "Flight"
         puts "Not liking your chances, you grab your companions and make a run for it. You run and run and run and happen to run straight into a magic portal that spits you out...... right back on your initial path."
-        puts path_choice
+        #puts path_choice
+        "flight"
         
     end 
 end 
@@ -162,36 +163,60 @@ def mount_attack
         end 
 end 
 
+def mountains
+    puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past the Mount Escendo!"
+    mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
+    case mountain
+    when "through_mountain" 
+        puts mount_attack
+    when "around_mountain"
+        puts eagles_nest
+    end 
+end 
+
+def cluthing(password,max_num)
+
+        
+        answer = ""
+        max = 5
+        count = 1
+    
+        while ((answer != password) && (count <= max))
+            puts "What is the password?"
+            answer = gets.chomp
+            count += 1
+        end
+        answer
+end
+
 def castle_door
     puts "You've reached the castle. The entrance has a large wooden door between two pillars. There is an inscription on the door."
     i = Artii::Base.new :font => 'smisome1'
     puts i.asciify('higgs boson')
-    
+
     password = 'higgs boson'
-    answer = ""
-    max = 5
-    count = 1
-    
-        while ((answer != password) && (count <= max))
-        puts "What is the password?"
-        answer = gets.chomp
-        count += 1
-        end
-            if (answer != password)
-                clue = $prompt.yes?("Thats not it, would you like a clue?")
-                case clue 
-                when 'Yes'
+
+        answer = cluthing(password,5)
+
+        while(answer != password)
+
+            clue = $prompt.yes?("Thats not it, would you like a clue?")
+
+            case clue 
+                when true
                 puts "Have you heard of the God particle?"
-                when 'No'
+                answer = cluthing(password,3)
+                when false
                     no_clue = $prompt.select("Would you like to continue guessing or exit the game?", %w(keep_guessing leave))
                     if no_clue == "leave"
-                        exit
-                    else 
+                        exit 
                     end
                 end
-            else
-            puts "correct, the door opens"
-            end
+
+        end
+
+        puts "correct, the door opens"
+        
  end 
  
  def pills
@@ -202,9 +227,18 @@ def castle_door
     p = Artii::Base.new :font => 'smkeyboard'
     puts p.asciify("Congratulations!")
     puts "The pass-key is Calvin-Bassham-Benson"
+    $play = false
+
+
     when "blue_pill"
     puts "the story ends, you wake up in your bed and believe whatever you want to believe. It is just a game after all."
-    exit
+
+    puts "play again?"
+    response = gets.chomp
+    if (response == "n")
+        $play = false
+    end
+    
     end 
 end 
     
@@ -213,26 +247,37 @@ end
 # *******
 
 
-puts path_choice
+# puts path_choice
 
-puts troll_choice
+# puts troll_choice
+
+# puts mountains
+
+# puts castle_door
+
+# puts pills
+
+$play = true
 
 
+while ($play)
 
-puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past the Mount Escendo!"
+    path_choice
+    while (troll_choice == "flight")
+        path_choice
+    end
+    mountains
+    castle_door
+    pills
 
-mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
+end
 
+def exit_routine
+    puts "BYE"
+    exit
+end
 
-case mountain
-when "through_mountain" 
-    puts mount_attack
-when "around_mountain"
-    puts eagles_nest
-end 
-
-puts castle_door
-puts pills
+exit_routine
 
 
 

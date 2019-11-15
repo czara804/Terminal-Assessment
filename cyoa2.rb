@@ -162,6 +162,17 @@ def mount_attack
         end 
 end 
 
+def mountains
+    puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past the Mount Escendo!"
+    mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
+    case mountain
+    when "through_mountain" 
+        puts mount_attack
+    when "around_mountain"
+        puts eagles_nest
+    end 
+end 
+
 def castle_door
     puts "You've reached the castle. The entrance has a large wooden door between two pillars. There is an inscription on the door."
     i = Artii::Base.new :font => 'smisome1'
@@ -217,21 +228,10 @@ puts path_choice
 
 puts troll_choice
 
-
-
-puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past the Mount Escendo!"
-
-mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
-
-
-case mountain
-when "through_mountain" 
-    puts mount_attack
-when "around_mountain"
-    puts eagles_nest
-end 
+puts mountains
 
 puts castle_door
+
 puts pills
 
 
