@@ -37,9 +37,9 @@ class User
     end 
 
     def each_companion_name
-        @companions.each do |pal|
-            pal.colorize(:red)
-        end 
+        @companions.each do |key,value|
+           puts value
+            end 
     end 
 
 end 
@@ -125,7 +125,59 @@ end
 
 
 # mountain_choice 
-puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}."
+puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past the Mount Escendo!"
+
+
+
+def eagles_nest
+    puts "You reach The Eagles Eyrie. You share the reason for your quest and the giant eagle offers to fly you to the castle from their nest. Use your wisdom and wit to prove your worth and solve the eagle's test.\n
+    This thing all things devours;
+    Birds, beasts, trees, flowers;
+    Gnaws iron, bites steel;
+    Grinds hard stones to meal;
+    Slays king, ruins town,
+    And beats mountain down."
+    answer = "time"
+    eagle_guess = gets.chomp
+    if answer == eagle_guess
+        "A wise character indeed, the eagle flys your group to the castle of Dr. Tempestas"
+    else 
+        puts "You will need to walk on foot as the eagle has determined that you are unwise. #{$user1.random_companion} suggests a path down.
+        You hear a rumble:"
+        # ru = Artii::Base.new :font 
+        # puts ru.asciify('Rumble')
+        puts "boulders start raining down up on you! You dodge but then slip and bounce down the mountain, resulting in death as you land on the jagged rocks below."
+        exit
+    end 
+end 
+
+def mount_attack
+    puts "You step into the mountain and follow the flickering flames through a tunnel that opens into a cavern. It is quiet. Too quiet. All of a sudden you realise you are surrounded by strange creatures. They say they are #{Faker::TvShows::DrWho.specie}. #{$user1.random_companion} thinks you can fight your way out."
+    attack_survive = $prompt.select("Pick a number to see your chance of survival",%w(1 2 3 4 5 6))
+        case attack_survive
+        when '4','2'
+        puts "This is why you have companions like #{$user1.get_companions}, as you fight your way through and make it out of the mountain. Damn, you've got skills. You see the Dr. Tempestas castle and sigh with collective relief. Walk on!"
+        when '1','3','5','6'
+        puts "#{$user1.random_companion} launches the first attack but your group quickly becomes overwhelmed, there's just too many! Is this how it ends?
+        Unfotunately, yes. You die a valiant death in battle."
+        exit
+        end 
+end 
+
+
+mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
+
+case mountain
+when "through_mountain" 
+    puts mount_attack
+when "around_mountain"
+    puts eagles_nest
+end 
+
+
+puts "You've reached the castle. You knock and are met with Dr. Tempestas. You ask for the pass-key for the Carbon-Fixing machine"
+
+
 
 
 
