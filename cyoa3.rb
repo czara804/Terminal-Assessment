@@ -302,29 +302,3 @@ exit_routine
 
 
 
-
-
-
-
-
-
-#//////////////////////////////////////
-# case companions_choice
-# when "Neo/Morpheus/Trinity"
-#     user1.set_companions=(MATRIX)
-#     puts "Throughout human history, we have been dependent on machines to survive. Fate, it seems, is not without a sense of irony."
-# when "Ron/Hermione/Neville"
-#     user1.set_companions=(HARRYPOTTER)
-#     puts Faker::Movies::HarryPotter.quote
-# when "Gandalf/Thorin/Elrond"
-#     user1.set_companions=(COMPANY)
-#     puts Faker::Movies::Hobbit.quote
-# end 
-
-# if companions_choice == 'Neo/Morpheus/Trinity'
-#     user1.set_companions(MATRIX)
-# elsif companions_choice == 'Ron/Hermione/Neville'
-#     user1.set_companions(HARRYPOTTER)
-# elsif companions_choice == 'Gandalf/Thorin/Elrond'
-#     user1.set_companions(COMPANY)
-# end

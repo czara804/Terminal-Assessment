@@ -1,35 +1,30 @@
 # Software Development Plan - CYOA
 
 ####Table of Contents
--
--
--
--
+- Statement of Purpose & Scope
+- Features
+- User Interaction & Experience 
+- Flow Chart
+- Install Instructions 
+- Help File 
 
 
 
 
 ###Statement of Purpose and Scope
 This terminal application is a 'Choose your own adventure' game in a Dungeons & Dragons style that allows the user to make choices throughout the story. The user encounters riddles along the way that will need to be solved to move on or will result in death or looping back to an earlier choice. 
-The main point of the game is fun! The application is fantasy based with references and nods to popular fandoms such as Dr. Who, The Hobbit, The Matrix, Harry Potter, and general fairytale tropes. The user is required to read the storyline for clues and identify the correct path through the game to reach Dr. Tempestas castle and retrieve a pass-key. It is part of a trend of puzzle and logic games, along with excape rooms, for an audience ranging from children to adults. There is a level of literacy required, and to help with story flow ascii art has beenn incorporated at main points of the storyline. 
+The main point of the game is fun! The application is fantasy based with references and nods to popular fandoms such as Dr. Who, The Hobbit, The Matrix, Harry Potter, and general fairytale tropes. The user is required to read the storyline for clues and identify the correct path through the game to reach Dr. Tempestas castle and retrieve a pass-key. It is part of a trend of puzzle and logic games, along with escape rooms, for an audience ranging from children to adults. There is a level of literacy required, and to help with story flow ascii art has beenn incorporated at main points of the storyline. 
 
-The user will need to download the game and run it in the terminal
-<!-- Develop a statement of purpose and scope for your application. It must include:
+The user will need to download the game and run it in the terminal. If the user finishes the game to completion, it will ask if the user would like to play again. If the user reaches an unfortunate death, they will need to run the application again in terminal to restart.
+The user will need to input a username and answer puzzles using keyboard (all answers should be in lowercase), otherwise can choose from a selection menu when they need to make a choice, including arrow selection or Y/n.  
 
 
-- describe at a high level what the application will do
-- identify the problem it will solve and explain why you are developing it
-- identify the target audience
-- explain how a member of the target audience will use it -->
 
 
 ###Features
-<!-- Develop a list of features that will be included in the application. It must include:
-- at least THREE features
-- describe each feature -->
 - pick companion
 - complete challenges
-- progress bar
+- ascii art 
 
 ###User Interaction and Experience
 <!-- Develop an outline of the user interaction and experience for the application.
