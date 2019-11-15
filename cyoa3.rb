@@ -14,6 +14,7 @@ def txt_image(filename)
 end 
 
 $mountain_image = txt_image("mountain-pic.txt")
+$castle_image = txt_image("castle-pic.txt")
 
 companions_groups = { :matrix => ['Neo', 'Morpheus', 'Trinity'], :hogwarts => ['Ron', 'Hermione', 'Neville'], :company => ['Gandalf', 'Thorin', 'Elrond']}
 
@@ -100,7 +101,7 @@ end
 
 
 def troll_choice
-puts "The wooden bridge is covered in vines and after you consult the map, you determine in it is the correct way to go. As you you take your first step onto the bridge, a troll appears!"
+puts "The wooden bridge is delapidated but after you consult the map, you determine in it is the correct way to go. As you you take your first step onto the bridge, a troll appears!"
 t = Artii::Base.new :font => 'slant'
 puts t.asciify('Troll!')
 troll_choice = $prompt.select("Troll in the dunge....I mean bridge. Should you stay and fight or take flight?", %w(Fight Flight))
@@ -176,7 +177,8 @@ def mount_attack
 end 
 
 def mountains
-    puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past the Mount Escendo!"
+    puts "Afterwards, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past Mount Escendo!"
+    puts $mountain_image
     mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
     case mountain
     when "through_mountain" 
@@ -202,7 +204,8 @@ def cluthing(password,max_num)
 end
 
 def castle_door
-    puts "You've reached the castle. The entrance has a large wooden door between two pillars. There is an inscription on the door."
+    puts $castle_image
+    puts "You've reached the castle. The entrance is a large wooden door. The inscription below is on the door."
     i = Artii::Base.new :font => 'smisome1'
     puts i.asciify('higgs boson')
 
