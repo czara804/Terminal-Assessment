@@ -144,8 +144,8 @@ def eagles_nest
     else 
         puts "You will need to walk on foot as the eagle has determined that you are unwise. #{$user1.random_companion} suggests a path down.
         You hear a rumble:"
-        # ru = Artii::Base.new :font 
-        # puts ru.asciify('Rumble')
+        ru = Artii::Base.new
+        puts ru.asciify('Rumble')
         puts "boulders start raining down up on you! You dodge but then slip and bounce down the mountain, resulting in death as you land on the jagged rocks below."
         exit
     end 
@@ -156,7 +156,7 @@ def mount_attack
     attack_survive = $prompt.select("Pick a number to see your chance of survival",%w(1 2 3 4 5 6))
         case attack_survive
         when '4','2'
-        puts "This is why you have companions like #{$user1.get_companions}, as you fight your way through and make it out of the mountain. Damn, you've got skills. You see the Dr. Tempestas castle and sigh with collective relief. Walk on!"
+        puts "This is why you have companions like #{$user1.get_companions}, as you fight your way through and make it out of the mountain. Damn, you've got skills. You see Dr. Tempestas' castle and sigh with collective relief. Walk on!"
         when '1','3','5','6'
         puts "#{$user1.random_companion} launches the first attack but your group quickly becomes overwhelmed, there's just too many! Is this how it ends?
         Unfotunately, yes. You die a valiant death in battle."
@@ -167,6 +167,25 @@ end
 
 mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
 
+
+
+# def pills
+#   puts "You knock and are met with Dr. Tempestas. You ask for the pass-key for the Carbon-Fixing machine"
+#     pill_choice = $prompt.select("Dr. Tempestas says that you will need to make a choice between two pills to be able to return and enter the pass-key into the machine. This is your last chance. After this, there is no turning back.", %w(red_pill blue_pill))
+#     case pill_choice
+#     when "red_pill"
+
+
+#     when "blue_pill"
+
+
+#     end 
+
+# end 
+
+
+
+
 case mountain
 when "through_mountain" 
     puts mount_attack
@@ -175,9 +194,16 @@ when "around_mountain"
 end 
 
 
-puts "You've reached the castle. You knock and are met with Dr. Tempestas. You ask for the pass-key for the Carbon-Fixing machine"
+def castle_door
+puts "You've reached the castle. The entrance has a large wooden door between two pillars. There is an inscription on the door."
+i = Artii::Base.new :font => 'smisome1'
+puts i.asciify('higgs boson')
+puts "What is the password?"
+user_pword = gets.chomp
+password = 'higgs boson'
 
 
+end 
 
 
 
