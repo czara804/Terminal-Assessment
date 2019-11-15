@@ -18,7 +18,7 @@ end
 $mountain_image = txt_image("mountain-pic.txt")
 $castle_image = txt_image("castle-pic.txt")
 
-companions_groups = { :matrix => ['Neo', 'Morpheus', 'Trinity'], :hogwarts => ['Ron', 'Hermione', 'Neville'], :company => ['Gandalf', 'Thorin', 'Elrond']}
+$companions_groups = { :matrix => ['Neo', 'Morpheus', 'Trinity'], :hogwarts => ['Ron', 'Hermione', 'Neville'], :company => ['Gandalf', 'Thorin', 'Elrond']}
 
 class User
     @username 
@@ -53,31 +53,10 @@ class User
 
     def each_companion_name
         @companions.each do |key,value|
-        puts value
-            end 
-        
+            puts value
+        end      
     end 
-
 end 
-
-
-$prompt = TTY::Prompt.new
-puts "Welcome Adventurer! We need your help. It's time to complete a quest!"
-puts "and, as the Doctor would say, #{Faker::TvShows::DrWho.catch_phrase}"
-response_name = $prompt.ask("What is your name, curious character?", default: 'Harry Potter')
-companions_choice = $prompt.select("What is a quest without some companions? Please select who you would like to accompany you:", companions_groups)
-
-
-$user1 = User.new(response_name, companions_choice)
-puts $user1.get_companions
-puts "____________________________________________________________________________________________________________"
-puts "Alright, #{$user1.get_name}, now that you've got some companions, I'm gifting you with a map to Dr. Tempestas castle. Let's get started!"
-#insert map
-
-puts "You and your companions have set out to see the famed but reclusive Climate Scientist Dr. Elsa Tempestas. She has a secret pass phrase you must recover to start a carbon-fixing machine that will halt the superheating of the Earth.
-You have reached a fork in the road. To the left is a long and winding road reaching towards the horizon and to the right is an aged forest path, twining between tall trees."
-
-
 
 # *******
 
@@ -91,7 +70,7 @@ You have reached a fork in the road. To the left is a long and winding road reac
 
 $play = true
 while ($play)
-
+    introduction
     path_choice
     while (troll_choice == "flight")
         path_choice

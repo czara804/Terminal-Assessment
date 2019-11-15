@@ -5,7 +5,27 @@ require "tty-prompt"
 require "artii"
 require "faker"
 
+
+def introduction
+    $prompt = TTY::Prompt.new
+    puts "Welcome Adventurer! We need your help. It's time to complete a quest!"
+    puts "and, as the Doctor would say, #{Faker::TvShows::DrWho.catch_phrase}"
+    response_name = $prompt.ask("What is your name, curious character?", default: 'Harry Potter')
+    companions_choice = $prompt.select("What is a quest without some companions? Please select who you would like to accompany you:", $companions_groups)
+    
+    $user1 = User.new(response_name, companions_choice)
+    puts $user1.get_companions
+    puts "____________________________________________________________________________________________________________"
+    puts "Alright, #{$user1.get_name}, now that you've got some companions, I'm gifting you with a map to Dr. Tempestas castle. Let's get started!"
+    #insert map
+    
+    puts "You and your companions have set out to see the famed but reclusive Climate Scientist Dr. Elsa Tempestas. She has a secret pass phrase you must recover to start a carbon-fixing machine that will halt the superheating of the Earth.
+    ___________________________________________________________________________________________________"
+    end 
+
+
 def path_choice
+    puts "You have reached a fork in the road. To the left is a long and winding road reaching towards the horizon and to the right is an aged forest path, twining between tall trees."
     pathway = $prompt.select("Which way do you go?", %w(Long_road Forest_path))
     case pathway
         when "Long_road"
@@ -110,11 +130,11 @@ def path_choice
         puts $mountain_image
         mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
         case mountain
-        when "through_mountain" 
-            puts mount_attack
-        when "around_mountain"
-            puts eagles_nest
-        end 
+            when "through_mountain" 
+                puts mount_attack
+            when "around_mountain"
+                puts eagles_nest
+            end 
     end 
     
     def cluthing(password,max_num)    
@@ -138,47 +158,46 @@ def path_choice
     
         password = 'higgs boson'
     
-            answer = cluthing(password,5)
-    
-            while(answer != password)
-    
-                clue = $prompt.yes?("Thats not it, would you like a clue?")
-    
-                case clue 
-                    when true
-                        puts "Have you heard of the God particle?"
-                        answer = cluthing(password,3)
-                    when false
-                        no_clue = $prompt.select("Would you like to continue guessing or exit the game?", %w(keep_guessing leave))
-                        if no_clue == "leave"
-                            exit 
-                        end
-                    end
-    
+        answer = cluthing(password,5)
+
+        while(answer != password)
+
+            clue = $prompt.yes?("Thats not it, would you like a clue?")
+
+            case clue 
+            when true
+                puts "Have you heard of the God particle?"
+                answer = cluthing(password,3)
+            when false
+                no_clue = $prompt.select("Would you like to continue guessing or exit the game?", %w(keep_guessing leave))
+                if no_clue == "leave"
+                    exit 
+                end
             end
-            puts "correct, the door opens"
+
+        end
+        puts "correct, the door opens"
     end 
      
     def pills
       puts "You find Dr. Tempestas. You ask for the pass-key for the Carbon-Fixing machine"
         pill_choice = $prompt.select("Dr. Tempestas says that you will need to make a choice between two pills to be able to return and enter the pass-key into the machine. This is your last chance. After this, there is no turning back.", %w(red_pill blue_pill))
         case pill_choice
-        when "red_pill"
-        p = Artii::Base.new :font => 'smkeyboard'
-        puts p.asciify("Congratulations!")
-        puts "The pass-key is Calvin-Bassham-Benson"
-        $play = false
-    
-    
-        when "blue_pill"
-        puts "the story ends, you wake up in your bed and believe whatever you want to believe. It is just a game after all."
-    
-        puts "play again?"
-        response = gets.chomp
-        if (response == "n")
+            when "red_pill"
+            p = Artii::Base.new :font => 'smkeyboard'
+            puts p.asciify("Congratulations!")
+            puts "The pass-key is Calvin-Bassham-Benson. 
+            Did you know they discovered the Dark Reactions that occur in photosynthesis? The original carbon-fixation."
             $play = false
-        end
         
-        end 
+            when "blue_pill"
+            puts "the story ends, you wake up in your bed and believe whatever you want to believe. It is just a game after all."
+            puts "play again?"
+            response = gets.chomp
+                if (response == "n")
+                    $play = false
+                end
+            
+            end 
     end 
         
