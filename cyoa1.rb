@@ -84,50 +84,47 @@ case pathway
     end 
 end 
 
-puts path_choice
 
-# troll_choice
+
+def troll_choice
 puts "The wooden bridge is covered in vines and after you consult the map, you determine in it is the correct way to go. As you you take your first step onto the bridge, a troll appears!"
 t = Artii::Base.new :font => 'slant'
 puts t.asciify('Troll!')
 troll_choice = $prompt.select("Troll in the dunge....I mean bridge. Should you stay and fight or take flight?", %w(Fight Flight))
-case troll_choice
-    when "Fight" 
-    puts "You stand your ground. The troll says you will need to answer a riddle and he will give you 3 attempts before something ghastly will happen"
-    puts "The troll says 
-            Only one color, but not one size,
-            Stuck at the bottom, yet easily flies,
-            Present in sun, but not in rain,
-            Doing no harm, and feeling no pain.
-            What am I?"
-            # riddle 
-            riddle_answer = "shadow"
-            answer = ""
-            3.times do puts "What is the solution?"
-                answer = gets.chomp
-                if answer == riddle_answer
-                    puts "Correct! The troll allows you to pass"  
-                    break
-                else answer == false
+    case troll_choice
+        when "Fight" 
+        puts "You stand your ground. The troll says you will need to answer a riddle and he will give you 3 attempts before something ghastly will happen"
+        puts "The troll says 
+                Only one color, but not one size,
+                Stuck at the bottom, yet easily flies,
+                Present in sun, but not in rain,
+                Doing no harm, and feeling no pain.
+                What am I?"
+                # riddle 
+                riddle_answer = "shadow"
+                answer = ""
+                3.times do puts "What is the solution?"
+                    answer = gets.chomp
+                    if answer == riddle_answer
+                        puts "Correct! The troll allows you to pass"  
+                        break
+                    else answer == false
+                    end 
                 end 
-            end 
-            #if (solved == false)
-            if (answer != riddle_answer)
-                puts "Unfortunately, you have run out of attempts. Angered, the troll causes the bridge to collapse and you are eaten by a congreation of alligators."
-                exit
-            end
+                #if (solved == false)
+                if (answer != riddle_answer)
+                    puts "Unfortunately, you have run out of attempts. Angered, the troll causes the bridge to collapse and you are eaten by a congreation of alligators."
+                    exit
+                end
+            
+        when "Flight"
+        puts "Not liking your chances, you grab your companions and make a run for it. You run and run and run and happen to run straight into a magic portal that spits you out...... right back on your initial path."
+        puts path_choice
         
-    when "Flight"
-    puts "Not liking your chances, you grab your companions and make a run for it. You run and run and run and happen to run straight into a magic portal that spits you out...... right back on your initial path."
-    puts path_choice
-    
+    end 
 end 
 
-
 # mountain_choice 
-puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past the Mount Escendo!"
-
-
 
 def eagles_nest
     puts "You reach The Eagles Eyrie. You share the reason for your quest and the giant eagle offers to fly you to the castle from their nest. Use your wisdom and wit to prove your worth and solve the eagle's test.\n
@@ -164,12 +161,39 @@ def mount_attack
         end 
 end 
 
-
-mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
-
-
-
-# def pills
+def castle_door
+    puts "You've reached the castle. The entrance has a large wooden door between two pillars. There is an inscription on the door."
+    i = Artii::Base.new :font => 'smisome1'
+    puts i.asciify('higgs boson')
+    
+    password = 'higgs boson'
+    answer = ""
+    max = 5
+    count = 1
+    
+        while ((answer != password) && (count <= max))
+        puts "What is the password?"
+        answer = gets.chomp
+        count += 1
+        end
+            if (answer != password)
+                clue = $prompt.yes?("Thats not it, would you like a clue?")
+                case clue 
+                when 'Yes'
+                puts "Have you heard of the God particle?"
+                when 'No'
+                    no_clue = $prompt.select("Would you like to continue guessing or exit the game?", %w(keep_guessing leave))
+                    if no_clue == "leave"
+                        exit
+                    else 
+                    end
+                end
+            else
+            puts "correct, the door opens"
+            end
+ end 
+ 
+ # def pills
 #   puts "You knock and are met with Dr. Tempestas. You ask for the pass-key for the Carbon-Fixing machine"
 #     pill_choice = $prompt.select("Dr. Tempestas says that you will need to make a choice between two pills to be able to return and enter the pass-key into the machine. This is your last chance. After this, there is no turning back.", %w(red_pill blue_pill))
 #     case pill_choice
@@ -177,13 +201,19 @@ mountain = $prompt.select("The map indicates you can go through the mountain but
 
 
 #     when "blue_pill"
-
+    # puts "the story ends, you wake up in your bed and believe whatever you want to believe."
 
 #     end 
 
 # end 
+    
+puts path_choice
 
+puts troll_choice
 
+puts "After, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past the Mount Escendo!"
+
+mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
 
 
 case mountain
@@ -193,17 +223,8 @@ when "around_mountain"
     puts eagles_nest
 end 
 
+puts castle_door
 
-def castle_door
-puts "You've reached the castle. The entrance has a large wooden door between two pillars. There is an inscription on the door."
-i = Artii::Base.new :font => 'smisome1'
-puts i.asciify('higgs boson')
-puts "What is the password?"
-user_pword = gets.chomp
-password = 'higgs boson'
-
-
-end 
 
 
 
