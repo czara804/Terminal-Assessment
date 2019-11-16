@@ -5,6 +5,15 @@ require "tty-prompt"
 require "artii"
 require "faker"
 
+def txt_image(filename)
+    begin
+    result = File.read(filename)
+    rescue StandardError => msg
+        puts "An error has occurred, can't display image. Play, on!"
+        result = ""
+    end 
+    result
+end 
 
 def introduction
     $prompt = TTY::Prompt.new
@@ -112,92 +121,113 @@ def eagles_nest
     end 
 end 
 
+def will_survive_mount_attack(attack_survive)
+    case attack_survive
+    when '4','2'
+        true
+    when '1','3','5','6'
+        false
+    else
+        false
+    end
+end
+
 def mount_attack
+    # (attack_survive)
     puts "You step into the mountain and follow the flickering flames through a tunnel that opens into a cavern. It is quiet. Too quiet. All of a sudden you realise you are surrounded by strange creatures. They say they are #{Faker::TvShows::DrWho.specie}. #{$user1.random_companion} thinks you can fight your way out."
     attack_survive = $prompt.select("Pick a number to see your chance of survival",%w(1 2 3 4 5 6))
-        case attack_survive
-        when '4','2'
-            puts "This is why you have companions like #{$user1.get_companions}, as you fight your way through and make it out of the mountain. Damn, you've got skills. You see Dr. Tempestas' castle and sigh with collective relief. Walk on!"
-        when '1','3','5','6'
-            puts "#{$user1.random_companion} launches the first attack but your group quickly becomes overwhelmed, there's just too many! Is this how it ends?
-            Unfotunately, yes. You die a valiant death in battle."
-            exit
+    does_survive = will_survive_mount_attack(attack_survive)
+    if does_survive
+        puts "Lucky you picked these legendary companions! You fight your way through the army and make it out of the mountain. Damn, you've got skills. You see Dr. Tempestas' castle and sigh with collective relief. Walk on!"
+    else
+        puts "#{$user1.random_companion} launches the first attack but your group quickly becomes overwhelmed, there's just too many! Is this how it ends?
+        Unfotunately, yes. You die a valiant death in battle."
+        exit
+    end 
+end 
+
+# def mount_attack
+#     puts "You step into the mountain and follow the flickering flames through a tunnel that opens into a cavern. It is quiet. Too quiet. All of a sudden you realise you are surrounded by strange creatures. They say they are #{Faker::TvShows::DrWho.specie}. #{$user1.random_companion} thinks you can fight your way out."
+#     attack_survive = $prompt.select("Pick a number to see your chance of survival",%w(1 2 3 4 5 6))
+#         case attack_survive
+#         when '4','2'
+#             puts "This is why you have companions like #{$user1.get_companions}, as you fight your way through and make it out of the mountain. Damn, you've got skills. You see Dr. Tempestas' castle and sigh with collective relief. Walk on!"
+#         when '1','3','5','6'
+#             puts "#{$user1.random_companion} launches the first attack but your group quickly becomes overwhelmed, there's just too many! Is this how it ends?
+#             Unfotunately, yes. You die a valiant death in battle."
+#             exit
+#         end 
+# end 
+    
+def mountains
+    puts "Afterwards, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past Mount Escendo!"
+    puts $mountain_image
+    mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
+    case mountain
+        when "through_mountain" 
+            puts mount_attack
+        when "around_mountain"
+            puts eagles_nest
         end 
 end 
     
-    def mountains
-        puts "Afterwards, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past Mount Escendo!"
-        puts $mountain_image
-        mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
-        case mountain
-            when "through_mountain" 
-                puts mount_attack
-            when "around_mountain"
-                puts eagles_nest
-            end 
-    end 
+def clue_quest(password,max_num)    
+        answer = ""
+        max = 5
+        count = 1
     
-    def cluthing(password,max_num)    
-            answer = ""
-            max = 5
-            count = 1
-        
-            while ((answer != password) && (count <= max))
-                puts "What is the password?"
-                answer = gets.chomp
-                count += 1
-            end
-            answer
-    end
-    
-    def castle_door
-        puts $castle_image
-        puts "You've reached the castle. The entrance is a large wooden door. The inscription below is on the door."
-        i = Artii::Base.new :font => 'smisome1'
-        puts i.asciify('higgs boson')
-    
-        password = 'higgs boson'
-    
-        answer = cluthing(password,5)
-
-        while(answer != password)
-
-            clue = $prompt.yes?("Thats not it, would you like a clue?")
-
-            case clue 
-            when true
-                puts "Have you heard of the God particle?"
-                answer = cluthing(password,3)
-            when false
-                no_clue = $prompt.select("Would you like to continue guessing or exit the game?", %w(keep_guessing leave))
-                if no_clue == "leave"
-                    exit 
-                end
-            end
-
+        while ((answer != password) && (count <= max))
+            puts "What is the password?"
+            answer = gets.chomp.downcase
+            count += 1
         end
-        puts "correct, the door opens"
-    end 
+        answer
+end
+    
+def castle_door
+    puts $castle_image
+    puts "You've reached the castle. The entrance is a large wooden door. The inscription below is on the door."
+    i = Artii::Base.new :font => 'smisome1'
+    puts i.asciify('higgs boson')
+
+    password = 'higgs boson'
+
+    answer = clue_quest(password,5)
+
+    while(answer != password)
+        clue = $prompt.yes?("Thats not it, would you like a clue?")
+        case clue 
+        when true
+            puts "Have you heard of the God particle?"
+            answer = clue_quest(password,3)
+        when false
+            no_clue = $prompt.select("Would you like to continue guessing or exit the game?", %w(keep_guessing leave))
+            if no_clue == "leave"
+                exit 
+            end
+        end
+    end
+    puts "correct, the door opens"
+end 
      
-    def pills
-      puts "You find Dr. Tempestas. You ask for the pass-key for the Carbon-Fixing machine"
-        pill_choice = $prompt.select("Dr. Tempestas says that you will need to make a choice between two pills to be able to return and enter the pass-key into the machine. This is your last chance. After this, there is no turning back.", %w(red_pill blue_pill))
-        case pill_choice
-            when "red_pill"
-            p = Artii::Base.new :font => 'smkeyboard'
-            puts p.asciify("Congratulations!")
-            puts "The pass-key is Calvin-Bassham-Benson. 
-            Did you know they discovered the Dark Reactions that occur in photosynthesis? The original carbon-fixation."
-            $play = false
-        
-            when "blue_pill"
-            puts "the story ends, you wake up in your bed and believe whatever you want to believe. It is just a game after all."
-            puts "play again?"
-            response = gets.chomp
-                if (response == "n")
-                    $play = false
-                end
-            
-            end 
+def pills
+    puts "You find Dr. Tempestas. You ask for the pass-key for the Carbon-Fixing machine"
+    pill_choice = $prompt.select("Dr. Tempestas says that you will need to make a choice between two pills to be able to return and enter the pass-key into the machine. This is your last chance. After this, there is no turning back.", %w(red_pill blue_pill))
+    case pill_choice
+    when "red_pill"
+        p = Artii::Base.new :font => 'smkeyboard'
+        puts p.asciify("Congratulations!")
+        puts "The pass-key is Calvin-Bassham-Benson. Did you know they discovered the Dark Reactions that occur in photosynthesis? The original carbon-fixation."
+        $play = false
+
+    when "blue_pill"
+        puts "the story ends, you wake up in your bed and believe whatever you want to believe. It is just a game after all."
+        puts "play again?"
+        response = gets.chomp
+            if (response == "n")
+                $play = false
+            end
+    
     end 
+end 
         
