@@ -13,21 +13,36 @@ require_relative "methods_cyoa"
 # end
 
 
-def test_mount_attack
-    expected_result = true
-    actual_result = will_survive_mount_attack('3')
-    if expected_result == actual_result
+# def test_mount_attack
+#     expected_result = true
+#     actual_result = will_survive_mount_attack('3')
+#     if expected_result == actual_result
+#         puts "PASS"
+#     else 
+#         puts "FAIL"
+
+#     end 
+# end 
+
+# # mount_attack
+# test_mount_attack
+
+
+def get_length
+    $mountain_image = txt_image("mountain-pic.txt")
+    $mountain_image.length
+end 
+
+
+
+def test_ascii_image
+    expected_result = 10
+    actual_result = get_length
+    if expected_result < actual_result
         puts "PASS"
     else 
         puts "FAIL"
 
     end 
 end 
-
-# mount_attack
-test_mount_attack
-
-
-
-# def test_ascii_image
-#     expected_result = 
+test_ascii_image

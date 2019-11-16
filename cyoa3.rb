@@ -82,7 +82,7 @@ while ($play)
 end
 
 def exit_routine
-    puts "BYE"
+    puts "TIME TO GO"
     exit
 end
 

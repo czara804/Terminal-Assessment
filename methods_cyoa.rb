@@ -76,7 +76,7 @@ troll_choice = $prompt.select("Troll in the dunge....I mean bridge. Should you s
                 riddle_answer = "shadow"
                 answer = ""
                 3.times do puts "What is the solution?"
-                    answer = gets.chomp
+                    answer = gets.chomp.downcase
                     if answer == riddle_answer
                         puts "Correct! The troll allows you to pass"  
                         break
@@ -108,7 +108,7 @@ def eagles_nest
     Slays king, ruins town,
     And beats mountain down."
     answer = "time"
-    eagle_guess = gets.chomp
+    eagle_guess = gets.chomp.downcase
     if answer == eagle_guess
         "A wise character indeed, the eagle flys your group to the castle of Dr. Tempestas"
     else 
