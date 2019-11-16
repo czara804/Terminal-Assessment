@@ -63,7 +63,7 @@ end
     
     
 def troll_choice
-puts "The wooden bridge is dilapidated but after you consult the map, you determine it is the correct way to go. As you you take your first step onto the bridge, a troll appears!"
+puts "The wooden bridge is dilapidated but after you consult the map, you determine in it is the correct way to go. As you you take your first step onto the bridge, a troll appears!"
 t = Artii::Base.new :font => 'slant'
 puts t.asciify('Troll!')
 troll_choice = $prompt.select("Troll in the dunge....I mean bridge. Should you stay and fight or take flight?", %w(Fight Flight))
@@ -95,11 +95,13 @@ troll_choice = $prompt.select("Troll in the dunge....I mean bridge. Should you s
             "fight"
         when "Flight"
         puts "Not liking your chances, you grab your companions and make a run for it. You run and run and run and happen to run straight into a magic portal that spits you out...... right back on your initial path."
+        #puts path_choice
         "flight"
         
     end 
 end 
     
+    # mountain_choice 
     
 def eagles_nest
     puts "You reach The Eagles Eyrie. You share the reason for your quest and the giant eagle offers to fly you to the castle from their nest. Use your wisdom and wit to prove your worth and solve the eagle's test.\n

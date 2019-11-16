@@ -28,16 +28,9 @@ require_relative "methods_cyoa"
 # test_mount_attack
 
 
-def get_length
-    $mountain_image = txt_image("mountain-pic.txt")
-    $mountain_image.length
-end 
-
-
-
 def test_ascii_image
     expected_result = 100
-    actual_result = get_length
+    actual_result = txt_image("mountain-pic.txt").length
     if actual_result > expected_result
         puts "PASS"
     else 
@@ -46,3 +39,15 @@ def test_ascii_image
     end 
 end 
 test_ascii_image
+
+def test_failed_ascii_image
+    expected_result = 100
+    actual_result = txt_image("notarealimage.txt").length
+    if actual_result < expected_result
+        puts "PASS"
+    else 
+        puts "FAIL"
+
+    end 
+end 
+test_failed_ascii_image
