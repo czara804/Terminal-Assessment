@@ -5,15 +5,6 @@ require "faker"
 
 require_relative "methods_cyoa"
 
-# def txt_image(filename)
-#     begin
-#     result = File.read(filename)
-#     rescue StandardError => msg
-#         puts "An error has occurred, can't display image. Play, on!"
-#         result = ""
-#     end 
-#     result
-# end 
 
 $mountain_image = txt_image("mountain-pic.txt")
 $castle_image = txt_image("castle-pic.txt")

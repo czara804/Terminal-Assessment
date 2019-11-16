@@ -36,9 +36,9 @@ end
 
 
 def test_ascii_image
-    expected_result = 10
+    expected_result = 100
     actual_result = get_length
-    if expected_result < actual_result
+    if actual_result > expected_result
         puts "PASS"
     else 
         puts "FAIL"

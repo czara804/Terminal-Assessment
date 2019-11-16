@@ -46,12 +46,9 @@ Around_Mountain: This riddle is given by the giant eagles if the user chooses to
 Door_puzzle: This puzzle has been designed using the gem Ascii, in which a phrase is written in 'smisome1' font. The user is required to decode and input the phrase to mvoe past this point. The user is given 5 chances before being offered a clue and then more opportunities to input. The user can choose to keep guessing or exit the application at this point. 
 
 
+Feature 3
+Ascii art has been called from a text file to incorporate visual checkpoints for the narrative. The text file is read from a method which incorporates error handling. Begin and rescue in the method allow a string to be displayed to the user in the case that the text file can't be read and allow the user to continue in the narrative.  
 
-
-
-
-- complete challenges
-- ascii art 
 
 ###User Interaction and Experience
 <!-- Develop an outline of the user interaction and experience for the application.
@@ -65,4 +62,4 @@ Your outline must include:
 - show the workflow/logic and/or integration of the features in your application for each feature.
 - utilise a recognised format or set of conventions for a control flow diagram, such as UML. -->
 
-###Install instructions 
+###Install instructions/ Help File 
