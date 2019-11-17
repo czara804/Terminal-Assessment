@@ -6,7 +6,8 @@ require "faker"
 require_relative "methods_cyoa"
 
 name = ARGV[0]
-puts "Hi #{name}, ready to play? Let's do it. You will be responsible for making the decisions from now on. Read carefully and use your wit and bravery to reach the end of the quest."
+puts "Hi #{name}, ready to play? Let's do it. You will be responsible for making the decisions from now on. 
+Read carefully and use your wit and bravery to reach the end of the quest."
 
 title = Artii::Base.new :font => 'larry3d'
 puts title.asciify("Nimbifer")

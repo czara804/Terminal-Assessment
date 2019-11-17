@@ -38,7 +38,7 @@ end
 
 
 def path_choice
-    puts "You have reached a fork in the road. To the left is a long and winding road reaching towards the horizon and to the right is an aged forest path, twining between tall trees."
+    puts "You have reached a fork in the road. To the left is a long and winding road reaching towards the horizon and to the right is an aged forest path, twining between tall trees.".colorize(:green)
     pathway = $prompt.select("Which way do you go?", %w(Long_road Forest_path))
     case pathway
         when "Long_road"
@@ -51,10 +51,10 @@ def path_choice
             puts "You come across an injured #{animal = Faker::Creature::Animal.name}" 
             animal_rescue = $prompt.select("Do you want to help #{animal} out?", "Sure", "No time, I'm on a quest")
                 if animal_rescue == "Sure"
-                    $user1.set_animal_resuce=("yes")
-                    puts "They tell you to make it through the mountain, the answer to all things is 4 2."
-                else 
-                    $user1.set_animal_resuce=("no")
+                    # $user1.set_animal_resuce=("yes")
+                    puts "They tell you to make it through the mountain, the answer to life, the universe and everything is 42.".colorize(:blue)
+                # else 
+                    # $user1.set_animal_resuce=("no")
                 end 
         
             puts "Dappled light is coming through the trees but it feels like something might be watching you in the shadows. You hurry along as #{$user1.random_companion} says they can see an exit up ahead. You come out of the of the forest and see a bridge."
@@ -120,7 +120,7 @@ def eagles_nest
         You hear a rumble:"
         ru = Artii::Base.new
         puts ru.asciify('Rumble')
-        puts "boulders start raining down up on you! You dodge but then slip and bounce down the mountain, resulting in death as you land on the jagged rocks below."
+        puts "boulders start raining down up on you! You dodge but then slip and bounce down the mountain, resulting in your death, as well as #{$user1.each_companion_name} as you land on the jagged rocks below."
         game_over
         exit_routine
     end 
@@ -143,7 +143,7 @@ def mount_attack
     attack_survive = $prompt.select("Pick a number to see your chance of survival",%w(1 2 3 4 5 6))
     does_survive = will_survive_mount_attack(attack_survive)
     if does_survive
-        puts "Lucky you picked these legendary companions! You fight your way through the army and make it out of the mountain. Damn, you've got skills. You see Dr. Tempestas' castle and sigh with collective relief. Walk on!"
+        puts "Lucky you picked these legendary companions! You fight your way through the army with #{$user1.each_companion_name} and make it out of the mountain. Damn, you've got skills. You see Dr. Tempestas' castle and sigh with collective relief. Walk on!"
     else
         puts "#{$user1.random_companion} launches the first attack but your group quickly becomes overwhelmed, there's just too many! Is this how it ends?
         Unfotunately, yes. You die a valiant death in battle."
@@ -168,7 +168,8 @@ end
 def mountains
     puts "Afterwards, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past Mount Escendo!"
     puts $mountain_image
-    mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
+    mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. 
+    You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
     case mountain
         when "through_mountain" 
             puts mount_attack
@@ -226,6 +227,10 @@ def pills
         puts p.asciify("Congratulations!")
         puts "The pass-key is Calvin-Bassham-Benson. Did you know they discovered the Dark Reactions that occur in photosynthesis? The original carbon-fixation."
         $play = false
+        restart = $prompt.yes?("Play again?")
+        if (restart == true)
+            $play = true
+        end
 
     when "blue_pill"
         puts "the story ends, you wake up in your bed and believe whatever you want to believe. It is just a game after all."
