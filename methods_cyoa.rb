@@ -21,7 +21,7 @@ end
 
 def introduction
     $prompt = TTY::Prompt.new
-    puts "Welcome Adventurer! We need your help. It's time to complete a quest!"
+    puts "Welcome, Adventurer! We need your help. It's time to complete a quest!"
     puts "and, as the Doctor would say, #{Faker::TvShows::DrWho.catch_phrase}"
     response_name = $prompt.ask("What would you like your username to be, curious character?", default: 'Harry Potter')
     companions_choice = $prompt.select("What is a quest without some companions? Please select who you would like to accompany you:", $companions_groups)
@@ -43,8 +43,9 @@ def path_choice
     case pathway
         when "Long_road"
             puts "All of a sudden a storm rolls in:"
-            r = Artii::Base.new :font => 'slant'
-            puts r.asciify('RainHailThunder&Lightning')
+            # r = Artii::Base.new :font => 'slant'
+            # puts r.asciify('RainHailThunder&Lightning')
+            puts $storm_image
             puts "The storm rages, lightning strikes on the road right in front of your group! Only you and #{$user1.random_companion} are left as you run down the road towards a river and a bridge."
         when "Forest_path"
             puts "You come across an injured #{animal = Faker::Creature::Animal.name}" 
@@ -90,7 +91,8 @@ troll_choice = $prompt.select("Troll in the dunge....I mean bridge. Should you s
                 #if (solved == false)
                 if (answer != riddle_answer)
                     puts "Unfortunately, you have run out of attempts. Angered, the troll causes the bridge to collapse and you are eaten by a congreation of alligators."
-                    exit
+                    game_over
+                    exit_routine
                 end
             "fight"
         when "Flight"
@@ -119,7 +121,8 @@ def eagles_nest
         ru = Artii::Base.new
         puts ru.asciify('Rumble')
         puts "boulders start raining down up on you! You dodge but then slip and bounce down the mountain, resulting in death as you land on the jagged rocks below."
-        exit
+        game_over
+        exit_routine
     end 
 end 
 
@@ -144,7 +147,8 @@ def mount_attack
     else
         puts "#{$user1.random_companion} launches the first attack but your group quickly becomes overwhelmed, there's just too many! Is this how it ends?
         Unfotunately, yes. You die a valiant death in battle."
-        exit
+        game_over
+        exit_routine
     end 
 end 
 
@@ -205,7 +209,8 @@ def castle_door
         when false
             no_clue = $prompt.select("Would you like to continue guessing or exit the game?", %w(keep_guessing leave))
             if no_clue == "leave"
-                exit 
+            game_over
+            exit_routine
             end
         end
     end
@@ -217,14 +222,15 @@ def pills
     pill_choice = $prompt.select("Dr. Tempestas says that you will need to make a choice between two pills to be able to return and enter the pass-key into the machine. This is your last chance. After this, there is no turning back.", %w(red_pill blue_pill))
     case pill_choice
     when "red_pill"
-        p = Artii::Base.new :font => 'smkeyboard'
+        p = Artii::Base.new :font => 'nvscript'
         puts p.asciify("Congratulations!")
         puts "The pass-key is Calvin-Bassham-Benson. Did you know they discovered the Dark Reactions that occur in photosynthesis? The original carbon-fixation."
         $play = false
 
     when "blue_pill"
         puts "the story ends, you wake up in your bed and believe whatever you want to believe. It is just a game after all."
-        puts "play again? put n to exit"
+        game_over
+        puts "Play again? press enter to play or put n to exit"
         response = gets.chomp
             if (response == "n")
                 $play = false
@@ -233,3 +239,13 @@ def pills
     end 
 end 
         
+
+def exit_routine
+    puts "TIME TO GO"
+    exit
+end
+
+def game_over
+    g = Artii::Base.new :font => 'nvscript'
+    puts g.asciify("GAME OVER")
+end 

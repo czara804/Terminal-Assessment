@@ -6,12 +6,14 @@ require "faker"
 require_relative "methods_cyoa"
 
 name = ARGV[0]
-puts "Hi #{name}, ready to play? Let's do it"
+puts "Hi #{name}, ready to play? Let's do it. You will be responsible for making the decisions from now on. Read carefully and use your wit and bravery to reach the end of the quest."
 
-
+title = Artii::Base.new :font => 'larry3d'
+puts title.asciify("Nimbifer")
 
 $mountain_image = txt_image("mountain-pic.txt")
 $castle_image = txt_image("castle-pic.txt")
+$storm_image = txt_image("rain.txt")
 
 $companions_groups = { :matrix => ['Neo', 'Morpheus', 'Trinity'], :hogwarts => ['Ron', 'Hermione', 'Neville'], :company => ['Gandalf', 'Thorin', 'Elrond']}
 
@@ -47,9 +49,7 @@ class User
     end 
 
     def each_companion_name
-        @companions.each do |key,value|
-            puts value
-        end      
+        @companions.join(", ") 
     end 
 end 
 
@@ -74,11 +74,6 @@ while ($play)
     castle_door
     pills
 
-end
-
-def exit_routine
-    puts "TIME TO GO"
-    exit
 end
 
 exit_routine

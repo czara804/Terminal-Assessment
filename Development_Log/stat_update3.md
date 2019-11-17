@@ -13,7 +13,6 @@ Add WINNER for red pill
 - have included error handling for images in the situation that calling from txt files doesn't work. Could add extra parameter in txt_image method for alt text. 
 
 
-
 Day 3 Plan: 
 - finish flow chart
 - incorporate the testing methods 

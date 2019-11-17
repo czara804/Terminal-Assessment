@@ -14,6 +14,5 @@ gem install tty-prompt
 gem install faker
 gem install artii
 
-echo "To bootup game, please enter your first name below next to the command 'ruby cyoa3.rb'"
+echo "To bootup game you need to copy and paste this bit onto the next line: ruby cyoa3.rb <name here>"
 
-ruby cyoa3.rb #enter name here

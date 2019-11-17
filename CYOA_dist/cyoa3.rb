@@ -9,7 +9,6 @@ name = ARGV[0]
 puts "Hi #{name}, ready to play? Let's do it"
 
 
-
 $mountain_image = txt_image("mountain-pic.txt")
 $castle_image = txt_image("castle-pic.txt")
 
