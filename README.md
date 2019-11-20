@@ -9,7 +9,7 @@ Choose Your Own Adventure: *Nimbifer*
 - Install Instructions 
 - Help File 
 
-**Statement of Purpose and Scope** 
+**T1A2-1    Statement of Purpose and Scope** 
 
 Choose Your Own Adventure: Nimbifer is a single-player adventure game with a written format that runs in the terminal. In this adventure game, the user assumes the role of the protagonist in an interactive story driven by exploration and puzzle-solving. The user directs the flow of the adventure through choices that result in a branching narrative, with an overarching goal of reaching a final endpoint as motivation. 'Nimbifer' follows the genre's emphasis on story and character, and draw's heavily from other narrative-based media. The user is prompted to input their choices via menu selection, and they solve riddles via key selection to move through stages of the game. Some choices will lead to ‘death’ and exit from the story without achieving the overarching goal upon which users will have an option to replay. The user ‘wins’ when they have reached the final stage and retrieved a phrase that ties into the narrative. 
 
@@ -23,7 +23,7 @@ Adventure game. (2017). En.wikipedia.org. Retrieved 20 November 2019, from https
 
 The user will need to download the application and run it in the terminal for gameplay. The user will use command line instructions to enter their name, stored in ARGV, with an option to create a username for game-play upon commencement or use a default. If the user finishes the game to completion, it will ask if the user would like to play again. If the user reaches an unfortunate death, they will exit the application and will need to run the application again in terminal to reboot. At this point they can choose a new username and companions. The adventure game style relies on storytelling, and by embarking upon a quest, the user controls the protagonist but must start the game with little knowledge or experience. Due to the use of the gem 'Faker' the user will experience variety in each iteration of game-play. 
 
-**Features** 
+**T1A2-2    Features** 
 
 The first feature of the application allows the user to pick their own username and choose a set of companions from a menu selection of options including: 
 
@@ -57,7 +57,7 @@ Ascii art, in the form of strings, have been called from text files to incorpora
 
 ![mountains](README_images/mountains.png)
 
-###User Interaction and Experience
+**T1A2-3    User Interaction and Experience**
 The terminal application opens with a brief introduction containing the user's name, previously entered in the command line. 
 
 ![introduction](README_images/introduction.png)
@@ -107,14 +107,17 @@ If the user does not correctly answer the riddle the narrative continues and res
 **Door_puzzle** 
 This puzzle has been designed using the gem Ascii, in which a phrase is written in 'smisome1' block font. The user is required to decode and input the phrase. 5 chances are given before a clue is offered with more input opportunities. The user can choose to keep guessing or exit the application at this point. 
 
-### Flow Chart
+### T1A2-4  Flow Chart
 
 The flow chart below shows control flow through the application commencing from the path choice stage. Prior to this stage the user chooses a username and companions which are stored as a class instance.
 
 ![flow chart](flow_chart.png "Control Flow for Choose Your Own Adventure: Nimbifer")
 
 
-### Installation Instructions 
+### T1A2-6 Development Log 
+Please see status updates and Trello screenshots, including feature checklists
+
+### T1A2-11 Installation Instructions 
 
 1. Download and install Ruby 2.5.0 if you have not already done so. 
 
