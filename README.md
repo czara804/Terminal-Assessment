@@ -91,20 +91,20 @@ User input is achieved via menu selection to minimize errors. User input for sol
 
 Global variables have been utilized to further minimize errors due to variable scope. 
 
-##Elaboration on puzzles 
+### Elaboration on puzzles 
 **Around_Mountain** 
 If the user does not correctly answer the riddle the narrative continues and results in exit from the game. An if statement has been utilised to check suitability of user input. This method has been incorporated into a total mountains method that encompasses both the around_mountain and through_mountain methods. 
 **Door_puzzle** 
 This puzzle has been designed using the gem Ascii, in which a phrase is written in 'smisome1' block font. The user is required to decode and input the phrase. 5 chances are given before a clue is offered with more input opportunities. The user can choose to keep guessing or exit the application at this point. 
 
-###Flow Chart
+### Flow Chart
 
 The flow chart below shows control flow through the application commencing from the path choice stage. Prior to this stage the user chooses a username and companions which are stored as a class instance.
 
 ![flow chart](flow_chart.png "Control Flow for Choose Your Own Adventure: Nimbifer")
 
 
-###Install Instructions 
+### Installation Instructions 
 
 1. Download and install Ruby 2.5.0 if you have not already done so. 
 
