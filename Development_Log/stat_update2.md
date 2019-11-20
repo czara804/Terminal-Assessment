@@ -1,4 +1,5 @@
 Stat update 2: 
+15/11/19 8.48am
 
 Day 1 summary
 - Software development plan skeleton and trello board set up in the morning. 

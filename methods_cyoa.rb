@@ -32,8 +32,7 @@ def introduction
     puts "Alright, #{$user1.get_name}, now that you've got some companions, I'm gifting you with a map to Dr. Tempestas castle. Let's get started!"
     #insert map
     
-    puts "You and your companions have set out to see the famed but reclusive Climate Scientist Dr. Elsa Tempestas. She has a secret pass phrase you must recover to start a carbon-fixing machine that will halt the superheating of the Earth.
-    ___________________________________________________________________________________________________"
+    puts "You and your companions have set out to see the famed but reclusive Climate Scientist Dr. Elsa Tempestas. She has a secret pass phrase you must recover to start a carbon-fixing machine that will halt the superheating of the Earth.\n _______________________________________________________________________________________________________________________"
 end 
 
 
@@ -92,7 +91,11 @@ troll_choice = $prompt.select("Troll in the dunge....I mean bridge. Should you s
                 if (answer != riddle_answer)
                     puts "Unfortunately, you have run out of attempts. Angered, the troll causes the bridge to collapse and you are eaten by a congreation of alligators."
                     game_over
-                    exit_routine
+                    # $play = false
+                    # play_again?
+                    # exit_routine
+                    # load (cyoa3.rb)
+                    
                 end
             "fight"
         when "Flight"
@@ -122,7 +125,7 @@ def eagles_nest
         puts ru.asciify('Rumble')
         puts "boulders start raining down up on you! You dodge but then slip and bounce down the mountain, resulting in your death, as well as #{$user1.each_companion_name} as you land on the jagged rocks below."
         game_over
-        exit_routine
+        $play = false
     end 
 end 
 
@@ -147,26 +150,14 @@ def mount_attack
     else
         puts "#{$user1.random_companion} launches the first attack but your group quickly becomes overwhelmed, there's just too many! Is this how it ends?
         Unfotunately, yes. You die a valiant death in battle."
+        
+        $play = false
         game_over
-        exit_routine
     end 
 end 
-
-# def mount_attack
-#     puts "You step into the mountain and follow the flickering flames through a tunnel that opens into a cavern. It is quiet. Too quiet. All of a sudden you realise you are surrounded by strange creatures. They say they are #{Faker::TvShows::DrWho.specie}. #{$user1.random_companion} thinks you can fight your way out."
-#     attack_survive = $prompt.select("Pick a number to see your chance of survival",%w(1 2 3 4 5 6))
-#         case attack_survive
-#         when '4','2'
-#             puts "This is why you have companions like #{$user1.get_companions}, as you fight your way through and make it out of the mountain. Damn, you've got skills. You see Dr. Tempestas' castle and sigh with collective relief. Walk on!"
-#         when '1','3','5','6'
-#             puts "#{$user1.random_companion} launches the first attack but your group quickly becomes overwhelmed, there's just too many! Is this how it ends?
-#             Unfotunately, yes. You die a valiant death in battle."
-#             exit
-#         end 
-# end 
     
 def mountains
-    puts "Afterwards, you turn around and each of your companions is behind you! Interesting, but it is a quest. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have get past Mount Escendo!"
+    puts "Afterwards, you turn around and each of your companions is behind you! They must have snuck around the troll during the fight. #{$user1.each_companion_name} are discussing how far it is to the castle. #{$user1.random_companion} thinks it must be about #{Faker::Space.distance_measurement}. But first, you have to get past Mount Escendo!"
     puts $mountain_image
     mountain = $prompt.select("The map indicates you can go through the mountain but there are rumours of a strange species that have been lurking in the forest that have come from Mt. Escendo. 
     You could go around but this may take longer and the rocky path is narrow and treacherous.", %w(through_mountain around_mountain))
@@ -211,7 +202,6 @@ def castle_door
             no_clue = $prompt.select("Would you like to continue guessing or exit the game?", %w(keep_guessing leave))
             if no_clue == "leave"
             game_over
-            exit_routine
             end
         end
     end
@@ -227,30 +217,34 @@ def pills
         puts p.asciify("Congratulations!")
         puts "The pass-key is Calvin-Bassham-Benson. Did you know they discovered the Dark Reactions that occur in photosynthesis? The original carbon-fixation."
         $play = false
-        restart = $prompt.yes?("Play again?")
-        if (restart == true)
-            $play = true
-        end
-
+        play_again?
     when "blue_pill"
         puts "the story ends, you wake up in your bed and believe whatever you want to believe. It is just a game after all."
         game_over
-        puts "Play again? press enter to play or put n to exit"
-        response = gets.chomp
-            if (response == "n")
-                $play = false
-            end
-    
+        
     end 
 end 
         
 
 def exit_routine
-    puts "TIME TO GO"
+    puts "Time To Go"
+    puts "To play again copy and paste: ruby cyoa3.rb <your name>"
+    # play_again?
     exit
 end
 
 def game_over
-    g = Artii::Base.new :font => 'nvscript'
+    g = Artii::Base.new :font => 'slant'
     puts g.asciify("GAME OVER")
+    exit_routine
+end 
+
+def play_again?
+    restart = $prompt.yes?("Do you want to play Nimbifer?")
+    if (restart == true)
+        $play = true
+    elsif (restart == false)
+        exit_routine
+        $play = false
+    end
 end 

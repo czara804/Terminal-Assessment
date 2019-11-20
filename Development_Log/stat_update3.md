@@ -1,5 +1,6 @@
 Stat_update 3
 
+15/11/19 7.30pm
 End of Day 2: 
 - have managed to finish code with help for the looping! everything is in methods and the program now loops through path and troll choices, continuing through the narrative
 - also fixed the clue for the door puzzle so now it asks if the user wants to quit or get a clue
@@ -12,7 +13,7 @@ Add WINNER for red pill
 - feature changed from progress bar to using ascii images for breaks in writing and to make stages more obvious. Calling castle and mountains from https://www.asciiart.eu/buildings-and-places/castles. No initials or names to credit other than website. 
 - have included error handling for images in the situation that calling from txt files doesn't work. Could add extra parameter in txt_image method for alt text. 
 
-
+16/11/19 10.00am 
 Day 3 Plan: 
 - finish flow chart
 - incorporate the testing methods 
