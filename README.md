@@ -29,10 +29,12 @@ The first feature of the application allows the user to pick their own username 
 (copyright "The Matrix", Warner Brothers)
 
 **Hogwarts**: Ron, Hermione, Neville              
-(copyright "Harry potter", J.K.Rowling)
+(copyright "Harry Potter", J.K.Rowling)
 
 **Company**: Gandalf, Thorin, Elrond              
 (copyright "The Hobbit", J.R.R Tolkien)
+
+_This application has been designed as a learning exercise and assessment for Coder Academy and the designer does not claim to hold any rights in regards to characters or situations that reference published works, including those listed above._
 
 Companions are called upon during the narrative. As the companions are tied to the user, each iteration of the game can include a different set of companions enhancing the variety during replay and thus user engagement. This feature has been implemented by the creation of a class titled User. The class contains a constructor for object initialization and methods for accessing user and companions within the story, including random companion. The companions are stored in a hash of arrays and once the user selects a group of companions (key), they (value) are set as an object attribute during the 'Introduction' method. There is scope to incorporate further attributes for the class instance throughout the game as more stages are added, and to call upon results of previous user choices. 
 
@@ -87,7 +89,9 @@ User input is achieved via menu selection to minimize errors. User input for sol
     end 
 ```
 
+Global variables have been utilized to further minimize errors due to variable scope. 
 
+##Elaboration on puzzles 
 **Around_Mountain** 
 If the user does not correctly answer the riddle the narrative continues and results in exit from the game. An if statement has been utilised to check suitability of user input. This method has been incorporated into a total mountains method that encompasses both the around_mountain and through_mountain methods. 
 **Door_puzzle** 
@@ -97,4 +101,43 @@ This puzzle has been designed using the gem Ascii, in which a phrase is written 
 
 The flow chart below shows control flow through the application commencing from the path choice stage. Prior to this stage the user chooses a username and companions which are stored as a class instance.
 
-![flow chart](flow_chart.png)
+![flow chart](flow_chart.png "Control Flow for Choose Your Own Adventure: Nimbifer")
+
+
+###Install Instructions 
+
+1. Download and install Ruby 2.5.0 if you have not already done so. 
+
+    [Ruby installation instructions](https://www.ruby-lang.org/en/documentation/installation/)
+
+2. Download and unzip with folder on your local computer. 
+
+
+
+3. Run the ```build.sh``` file to install required ruby gems. 
+
+On the terminal command line, navigate to an appropriate folder and then type the command below, to install the CYOA folder.
+```Ruby
+./build.sh
+```
+
+4. Navigate to ```CYOA_dist``` folder
+
+```Ruby
+cd CYOA_dist
+```
+
+5. Input the below command to commence game, with your first name after the command and press return.
+
+```Ruby
+ruby cyoa3.rb <yourname>
+```
+
+6. Commence game play following written prompts on screen. 
+For choices follow the instructions: ```Y/n```, ```Use ↑/↓ arrow keys and press Enter to select```, or input a word using your keyboard. 
+
+**Help**
+- To solve the riddles, please make sure you do not enter spaces after the word or phrase. The solutions are not case sensitive.
+- If the program isn't running, ensure you have the correct Ruby version installed: 2.5.0
+
+
