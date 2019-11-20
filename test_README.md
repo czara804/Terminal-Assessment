@@ -2,7 +2,7 @@
 
 **The first test is for the mount_attack method found in the mountains method.**
 
-The method requires 2 numbers, 2 or 4, to pass the test (true) for the control flow of this stage to function appropriately. The test takes an integer as an argument and returns whether the input will pass or fail so this can be used within the method. 
+The method requires 2 numbers, 2 or 4, to pass the test for the control flow of this stage to function appropriately. The test takes an integer as an argument and returns whether the input will pass or fail so this can be used within the method. 
 
 ```Ruby
 require_relative "methods_cyoa"
@@ -34,7 +34,6 @@ end
 test_mount_attack
 
 ```
-The output below shows the result of different parameters:
 ![mount attack test output](mount_attack_output.png)
 
 **The second test is to ensure the images, called from txt files are being read appropriately.** 

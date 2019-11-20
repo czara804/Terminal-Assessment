@@ -117,13 +117,13 @@ def eagles_nest
     answer = "time"
     eagle_guess = gets.chomp.downcase
     if answer == eagle_guess
-        "A wise character indeed, the eagle flys your group to the castle of Dr. Tempestas"
+        "A wise character indeed, the eagle flys your group to the castle of Dr. Tempestas."
     else 
         puts "You will need to walk on foot as the eagle has determined that you are unwise. #{$user1.random_companion} suggests a path down.
         You hear a rumble:"
         ru = Artii::Base.new
         puts ru.asciify('Rumble')
-        puts "boulders start raining down up on you! You dodge but then slip and bounce down the mountain, resulting in your death, as well as #{$user1.each_companion_name} as you land on the jagged rocks below."
+        puts "Boulders start raining down upon you! You dodge but then slip and bounce down the mountain, resulting in your death, as well as #{$user1.each_companion_name} as you land on the jagged rocks below."
         game_over
         $play = false
     end 
