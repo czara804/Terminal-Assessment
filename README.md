@@ -45,8 +45,8 @@ Ascii art, in the form of strings, have been called from text files to incorpora
 
 ![mountains](README_images/mountains.png)
 
-**User Interaction and Experience**
-The terminal application opens with a brief introduction: 
+###User Interaction and Experience
+The terminal application opens with a brief introduction containing the user's name, previously entered in the command line. 
 
 ![introduction](README_images/introduction.png)
 
@@ -61,9 +61,36 @@ Outcomes are communicated to user via written text, including ‘GAME OVER’ or
 
 ![game_over](README_images/gameover.png)
 
-Errors in calling text files have been handled using begin and rescue and the user will be shown an error message to indicate an image could not be shown. User input is achieved via menu selection to minimize errors. User input for solving puzzles is restricted to strings that are converted to lower case to minimize errors. 
+Errors in calling text files have been handled using begin and rescue and the user will be shown an error message to indicate an image could not be shown. 
 
-Around_Mountain: If the user does not correctly answer the riddle the narrative continues and results in exit from the game. An if statement has been utilised to check suitability of user input. This method has been incorporated into a total mountains method that encompasses both the around_mountain and through_mountain methods. 
-Door_puzzle: This puzzle has been designed using the gem Ascii, in which a phrase is written in 'smisome1' block font. The user is required to decode and input the phrase. 5 chances are given before a clue is offered with more input opportunities. The user can choose to keep guessing or exit the application at this point. 
+```Ruby 
+def txt_image(filename)
+    begin
+    result = File.read(filename)
+    rescue StandardError => msg
+        puts "An error has occurred, can't display image. Play, on!"
+        result = ""
+    end 
+    result
+end 
+```
+
+User input is achieved via menu selection to minimize errors. User input for solving puzzles is restricted to strings that are converted to lower case to minimize errors. The user, in most cases, is given multiple chances to imput by using a loop structure. 
+
+```Ruby
+3.times do puts "What is the solution?"
+    answer = gets.chomp.downcase
+    if answer == riddle_answer
+        puts "Correct! The troll allows you to pass"  
+        break
+    else answer == false
+    end 
+```
+
+
+**Around_Mountain** 
+If the user does not correctly answer the riddle the narrative continues and results in exit from the game. An if statement has been utilised to check suitability of user input. This method has been incorporated into a total mountains method that encompasses both the around_mountain and through_mountain methods. 
+**Door_puzzle** 
+This puzzle has been designed using the gem Ascii, in which a phrase is written in 'smisome1' block font. The user is required to decode and input the phrase. 5 chances are given before a clue is offered with more input opportunities. The user can choose to keep guessing or exit the application at this point. 
 
 
