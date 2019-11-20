@@ -93,4 +93,8 @@ If the user does not correctly answer the riddle the narrative continues and res
 **Door_puzzle** 
 This puzzle has been designed using the gem Ascii, in which a phrase is written in 'smisome1' block font. The user is required to decode and input the phrase. 5 chances are given before a clue is offered with more input opportunities. The user can choose to keep guessing or exit the application at this point. 
 
+###Flow Chart
 
+The flow chart below shows control flow through the application commencing from the path choice stage. Prior to this stage the user chooses a username and companions which are stored as a class instance.
+
+![flow chart](flow_chart.png)
