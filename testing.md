@@ -34,8 +34,10 @@ end
 test_mount_attack
 
 ```
+![mount attack test output](mount_attack_output.png)
 
-**The second test is to ensure the images, called from txt files are being read appropriately.** This test checks whether the string length is appropriate for the ascii art. Text files containing ascii art should be longer than 100 characters. 
+**The second test is to ensure the images, called from txt files are being read appropriately.** 
+This test checks whether the string length is appropriate for the ascii art. Text files containing ascii art should be longer than 100 characters. 
 
 
 ```Ruby
@@ -64,3 +66,5 @@ end
 test_failed_ascii_image
 
 ```
+
+![ascii art test output](ascii_image_output.png)
