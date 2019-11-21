@@ -54,7 +54,9 @@ Game Design
 - puzzle-solving: Troll riddle, Eagle riddle, Door puzzle
 - story and setting: branching narrative, references to literature, humour
 - dialogue and secret reveal
-- multiple deaths (primary failure condition) 
+- multiple deaths (primary failure condition)
+
+The game flow is encapsulated in a game-play method which loops through the stages, including a loop for path and troll (see flow-chart), using a global variable for play which returns true or false depending on narrative outcome. 
 
 Ascii art, in the form of strings, have been called from text files to incorporate visual checkpoints for the narrative. The text file is read via a method which incorporates error handling. Begin and rescue in the method allow a string to be displayed to the user in the case that the text file can't be read and allow the user to continue in the narrative.
 
@@ -114,7 +116,7 @@ This puzzle has been designed using the gem Ascii, in which a phrase is written 
 
 The flow chart below shows control flow through the application commencing from the path choice stage. Prior to this stage the user chooses a username and companions which are stored as a class instance.
 
-![flow chart](flow_chart.png "Control Flow for Choose Your Own Adventure: Nimbifer")
+![flow chart](README_images/flow_chart.png "Control Flow for Choose Your Own Adventure: Nimbifer")
 
 
 ### T1A2-6 Development Log 
