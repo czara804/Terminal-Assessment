@@ -176,6 +176,6 @@ Please see ```test_methods_cyoa.rb``` and test outline with output in test_READM
 T1A2-13 - Source control was used throughout the development of appliation - Please see zip file for Github.
 [Link to GitHub](https://github.com/czara804/Terminal-Assessment)
 
-T1A2-14 - Project management was conducted through Trello. Please see screenshots in ```Development_log``` folder. 
+T1A2-14 - Project management was conducted through Trello. Please see screenshots in ```Development_log``` folder, as well as a table showing feature implementation (PDF). 
 
 T1A2-15 - Automated building using a shell script. Please see ```build.sh```. 
