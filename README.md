@@ -90,7 +90,7 @@ def txt_image(filename)
 end 
 ```
 
-User input is achieved via menu selection to minimize errors. User input for solving puzzles is restricted to strings that are converted to lower case to minimize errors. The user, in most cases, is given multiple chances to imput by using a loop structure. 
+User input is achieved via menu selection to minimize errors. User input for solving puzzles is restricted to strings that are converted to lower case to minimize errors. The user, in most cases, is given multiple chances to input by using a loop structure. 
 
 ```Ruby
 3.times do puts "What is the solution?"
@@ -129,39 +129,45 @@ Please see status updates and Trello screenshots, including feature checklists
 
     [Ruby installation instructions](https://www.ruby-lang.org/en/documentation/installation/)
 
-2. Download and unzip with folder on your local computer. 
+2. Download and unzip the folder on your local computer. Alternatively you can clone the repository. 
 
+3. From the root directory of the application, you will need to make the shell script executable. In the terminal command line, type: 
 
+    ```Ruby
+    chmod +x build.sh
+    ```
 
-3. Run the ```build.sh``` file to install required ruby gems. 
+4. Run the ```build.sh``` file to install required ruby gems.
 
-On the terminal command line, navigate to an appropriate folder and then type the command below, to install the CYOA folder.
-```Ruby
-./build.sh
-```
+    
+    On the terminal command line, type the command below, to install the CYOA folder.
+    ```Ruby
+    ./build.sh
+    ```
 
-4. Navigate to ```CYOA_dist``` folder
+5. Navigate to ```CYOA_dist``` folder
 
-```Ruby
-cd CYOA_dist
-```
+    ```Ruby
+    cd CYOA_dist
+    ```
 
-5. Input the below command into the Terminal to commence game, with your first name after the command and press return.
+6. Input the below command into the Terminal to commence game, with your first name after the command and press return.
 
-```Ruby
-ruby cyoa3.rb <yourname>
-```
+    ```Ruby
+    ruby cyoa3.rb <yourname>
+    ```
 
-6. Commence game play following written prompts on screen. 
+7. Commence game play following written prompts on screen. 
 For choices follow the instructions: ```Y/n```, ```Use ↑/↓ arrow keys and press Enter to select```, or input a word using your keyboard. 
 
-**Help**
-- To solve the riddles, please make sure you do not enter spaces after the word or phrase. The solutions are not case sensitive.
+###Help
+- To solve the riddles, please make sure you do not enter spaces after the word or phrase. The solutions are not case sensitive, so go as CAPS happy as you like. 
 - If the program isn't running, ensure you have the correct Ruby version installed: 2.5.0
+- Lacking in permission rights? The build script will need to be modified to be executable before it will download all the gems you need (_see installation instructions above_).
 
 ### T1A2-12  Test Application 
 
-Please see ```test_methods_cyoa.rb``` and test outline with output in Test_README.md
+Please see ```test_methods_cyoa.rb``` and test outline with output in test_README.md
 
 ### Developer Operations
 
