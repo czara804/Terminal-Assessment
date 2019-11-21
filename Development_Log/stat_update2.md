@@ -1,4 +1,4 @@
-Stat update 2: 
+### Status Update 2
 15/11/19 8.48am
 
 Day 1 summary
