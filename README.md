@@ -162,7 +162,7 @@ Please see status updates and Trello screenshots, including feature checklists
 7. Commence game play following written prompts on screen. 
 For choices follow the instructions: ```Y/n```, ```Use ↑/↓ arrow keys and press Enter to select```, or input a word using your keyboard. 
 
-###Help
+### Help
 - To solve the riddles, please make sure you do not enter spaces after the word or phrase. The solutions are not case sensitive, so go as CAPS happy as you like. 
 - If the program isn't running, ensure you have the correct Ruby version installed: 2.5.0
 - Lacking in permission rights? The build script will need to be modified to be executable before it will download all the gems you need (_see installation instructions above_).
